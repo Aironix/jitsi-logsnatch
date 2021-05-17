@@ -1,6 +1,6 @@
 #--- Variables ---
 $LogFilePath = "/var/log/jitsi/jicofo.log"
-$LogFilePath = "D:\jicofo.log"  #for testing purposes on windows client
+#$LogFilePath = "D:\jicofo.log"  #for testing purposes on windows client
 
 $Global:Rooms = @()
 $Global:LogFileContent = Get-Content -Path $LogFilePath
