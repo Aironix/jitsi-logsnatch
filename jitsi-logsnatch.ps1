@@ -1,3 +1,7 @@
+param(
+        [parameter(Mandatory = $false)][switch]$all
+    )
+
 #--- Variables ---
 $LogFilePath = "/var/log/jitsi/jicofo.log"
 #$LogFilePath = "D:\jicofo.log"  #for testing purposes on windows client
@@ -100,4 +104,8 @@ Get-OpenedRooms
 Get-ClosedRooms
 Get-NumberOfParticipants
 
-$Global:Rooms | Where-Object {$_.RoomState -eq $true} | Select-Object RoomName, StartTime, ParticipantCount  | Format-Table
+if(!($all)){
+    $Global:Rooms | Where-Object {$_.RoomState -eq $true} | Select-Object RoomName, StartTime, ParticipantCount  | Format-Table
+} else {
+    $Global:Rooms | Select-Object RoomName, StartTime, EndTime, ParticipantCount | Format-Table
+}
